@@ -1,5 +1,5 @@
 const allRoles = {
-  user: ['getCourses', 'notification', 'getInteractions', 'manageInteractions', 'user'],
+  user: ['manageCourses','getCourses', 'notification', 'getInteractions', 'manageInteractions', 'user'],
   emrys: ['getCourses', 'notification', 'getInteractions', 'manageInteractions', 'user', 'emrys'],
   teacher: [
     'getUsers',

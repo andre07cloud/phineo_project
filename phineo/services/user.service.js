@@ -116,6 +116,11 @@ const getUserByUid = async (uid) => {
   return User.findOne({ uid });
 };
 
+const getUserCourses = async (userId) => {
+  return User.find().select('courses').
+  populate('courses');
+};
+
 const removeAssignment = async (data) => {
   const user = await getOnlyUserById(data.userId);
   if (!user) {
@@ -194,4 +199,5 @@ module.exports = {
   removeAssignment,
   getUserStatsById,
   getUserTagsById,
+  getUserCourses
 };

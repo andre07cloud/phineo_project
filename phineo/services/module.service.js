@@ -125,7 +125,21 @@ const validateModuleCommentById = async (moduleId, commentId) => {
   if (module.comments) {
     module.comments.map((item) => {
       if (item.id === commentId) {
-       item.validated = true;
+       item.validated = "true";
+      }
+    });
+  }
+  await module.save();
+  return module;
+};
+
+//reject module comment
+const closeModuleCommentById = async (moduleId, commentId) => {
+  const module = await Module.findById({ _id: moduleId });
+  if (module.comments) {
+    module.comments.map((item) => {
+      if (item.id === commentId) {
+       item.validated = "false";
       }
     });
   }
@@ -142,5 +156,7 @@ module.exports = {
   deleteModuleById,
   updateModuleCommentsById,
   updateModuleCommentReplyById,
-  validateModuleCommentById
+  validateModuleCommentById,
+  closeModuleCommentById
+
 };

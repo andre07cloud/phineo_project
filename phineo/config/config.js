@@ -41,6 +41,8 @@ module.exports = {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      user: envVars.DBUSERNAME, 
+      pass: envVars.DBPWD
     },
   },
   jwt: {

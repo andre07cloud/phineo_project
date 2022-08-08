@@ -90,7 +90,7 @@ const moduleSchema = mongoose.Schema(
     comments: {
       type: [
         {
-          validated: {type: Boolean, default: false},
+          validated: {type: String, default: 'pending'},
           userId: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' },
           comment: { type: String },
           responses: [

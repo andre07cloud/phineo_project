@@ -39,6 +39,7 @@ const getCourse = catchAsync(async (req, res) => {
 
 const getFullCourse = catchAsync(async (req, res) => {
   const course = await courseService.getFullCourseById(req.params.courseId, req.user.id, req.user.role);
+  console.log(req.user);
   if (!course) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Course not found');
   }

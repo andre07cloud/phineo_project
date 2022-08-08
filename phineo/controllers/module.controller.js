@@ -4,6 +4,7 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { moduleService, sectionService, logService } = require('../services');
+const { Module } = require('../models');
 
 const createModule = catchAsync(async (req, res) => {
   const module = await moduleService.createModule(req.body);
@@ -44,6 +45,33 @@ const getModuleComments = catchAsync(async (req, res) => {
   res.send(comments);
 });
 
+//Get all unValidated comments
+const getAllComments = catchAsync(async (req, res) => {
+  const modules = await Module.find().select('comments');
+  let commentslist = [];
+  let commentInside = [];
+ //console.log(modules);
+  modules.map((item) => {
+    //console.log(item);
+    //console.log(item.validated);
+    
+      commentslist.push(item);
+    
+    // item.map((item2) => {
+    //   console.log(item2.validated);
+    // })
+    
+  });
+  commentslist.map((item) => {
+     console.log(item.comments);
+     commentInside.push(item);
+  });
+  for(const elt in commentslist){
+    //console.log(elt.length);
+  }
+  res.send(commentslist);
+});
+
 //Get validated comments
 const getValidatedModuleComments = catchAsync(async (req, res) => {
   const module = await moduleService.getModuleById(req.params.moduleId);
@@ -62,7 +90,7 @@ const getValidatedModuleComments = catchAsync(async (req, res) => {
   res.send(commentValidated);
 });
 
-//Get validated comments
+//Get user validated comments
 const getUserdModuleComments = catchAsync(async (req, res) => {
   const module = await moduleService.getModuleById(req.params.moduleId);
   const userId = req.params.userId;
@@ -126,11 +154,17 @@ const getModuleTitle = catchAsync(async (req, res) => {
   }
   res.send(module);
 });
-//validate module
+//validate Comment
 const validateModuleComment = catchAsync(async (req, res) => {
  const moduleUpdated = await moduleService.validateModuleCommentById(req.params.moduleId, req.params.commentId);
  res.send(moduleUpdated);
 });
+
+//close Comment
+const closeModuleComment = catchAsync(async (req, res) => {
+  const moduleUpdated = await moduleService.closeModuleCommentById(req.params.moduleId, req.params.commentId);
+  res.send(moduleUpdated);
+ });
 
 module.exports = {
   createModule,
@@ -143,7 +177,9 @@ module.exports = {
   updateModuleComments,
   updateModuleCommentReply,
   validateModuleComment,
+  closeModuleComment,
   getValidatedModuleComments,
   getUnValidatedModuleComments,
-  getUserdModuleComments
+  getUserdModuleComments,
+  getAllComments
 };
