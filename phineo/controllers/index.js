@@ -1,0 +1,16 @@
+module.exports.authController = require('./auth.controller');
+module.exports.userController = require('./user.controller');
+module.exports.courseController = require('./course.controller');
+module.exports.moduleController = require('./module.controller');
+module.exports.commandeController = require('./commande.controller');
+module.exports.correctionController = require('./correction.controller');
+module.exports.logController = require('./log.controller');
+module.exports.tagController = require('./tag.controller');
+module.exports.interactionController = require('./interaction.controller');
+module.exports.interactionMessageController = require('./interactionMessage.controller');
+module.exports.responseController = require('./response.controller');
+module.exports.sectionController = require('./section.controller');
+module.exports.assignmentsController = require('./assignments.controller');
+module.exports.cronController = require('./cron.crontoller');
+module.exports.notificationController = require('./notification.controller');
+module.exports.analyticsController = require('./analytics.controller');

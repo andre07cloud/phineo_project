@@ -1,0 +1,14 @@
+module.exports.authValidation = require('./auth.validation');
+module.exports.userValidation = require('./user.validation');
+module.exports.courseValidation = require('./course.validation');
+module.exports.commandeValidation = require('./commande.validation');
+module.exports.logValidation = require('./log.validation');
+module.exports.correctionValidation = require('./correction.validation');
+module.exports.sectionValidation = require('./section.validation');
+module.exports.moduleValidation = require('./module.validation');
+module.exports.responseValidation = require('./response.validation');
+module.exports.assignmentsValidation = require('./assignments.validation');
+module.exports.notificationValidation = require('./notification.validation');
+module.exports.interactionValidation = require('./interaction.validation');
+module.exports.interactionMessageValidation = require('./interactionMessage.validation');
+module.exports.analyticsValidation = require('./analytics.validation');
